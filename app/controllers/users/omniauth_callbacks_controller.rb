@@ -1,15 +1,13 @@
 # app/controllers/users/omniauth_callbacks_controller.rb:
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    def google_oauth2
-        handle_auth 'Google'
-    end
+  def google_oauth2
+    handle_auth('Google')
+  end
 
-    def github
-        handle_auth 'Github'
-    end
-
-
+  def github
+    handle_auth('Github')
+  end
 
   def handle_auth(kind)
     # You need to implement the method below in your model (e.g. app/models/user.rb)
@@ -22,6 +20,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session['devise.google_data'] = request.env['omniauth.auth'].except('extra') # Removing extra as it can overflow some session stores
       redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
     end
-
   end
 end
