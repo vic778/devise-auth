@@ -9,12 +9,10 @@ class User < ApplicationRecord
     User.where(email: data['email']).first
 
     # Uncomment the section below if you want users to be created if they don't exist
-    unless @user
-        @user = User.create(
-           email: data['email'],
-           password: Devise.friendly_token[0,20]
-        )
-    end
+    @user ||= User.create(
+      email: data['email'],
+      password: Devise.friendly_token[0, 20]
+    )
     @user
   end
 end
