@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoggleAuth</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div>
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+    </div>
+
+    <div>
+    <% if current_user%>
+      <%= link_to current_user.email, edit_user_registration_path %>
+      <br>
+      <%= link_to "Users", users_path%>
+      <br>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>
