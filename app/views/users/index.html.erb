@@ -1,8 +1,5 @@
-<h1>All Users</h1>
+Users:
+<%= User.count%>
+<hr>
 
-<%@users.each do |user|%>
-    <div>
-        <p><%= user.email %></p>
-        <p><%= user.created_at %></p>
-    </div>
-<%end%>
+<%= render @users%>
